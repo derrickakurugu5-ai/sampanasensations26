@@ -111,7 +111,6 @@ checkoutBtn.addEventListener('click', () => {
         return;
     }
 
-    // Grab field input data cleanly with absolute backup fallback names
     const name = document.getElementById('customer-name').value.trim() || 'Valued Customer';
     const location = document.getElementById('customer-location').value.trim() || 'Specify on Chat';
     const payment = document.getElementById('payment-method').value;
@@ -132,9 +131,9 @@ checkoutBtn.addEventListener('click', () => {
 
     orderText += '\n💰 Total Order Cost: GH₵' + total.toFixed(2);
 
-    // Completely built plain mathematical string addition routing link
     const baseLink = "https://wa.me";
     const finalCleanURL = baseLink + encodeURIComponent(orderText);
     
-    window.open(finalCleanURL, '_blank');
+    // CRITICAL FIX: Changing window location directly instead of window.open forces mobile browsers to forward directly to WhatsApp!
+    window.location.href = finalCleanURL;
 });
