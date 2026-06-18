@@ -1,367 +1,544 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
-<meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
->
-
-<title>Sampana Sensations</title>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-
-background:#090909;
-
-color:white;
-
-font-family:Arial;
-
-}
-
-header{
-
-padding:30px;
-
-text-align:center;
-
-}
-
-.logo{
-
-font-size:40px;
-
-color:#d4af37;
-
-font-weight:bold;
-
-}
-
-.slogan{
-
-margin-top:10px;
-
-font-size:18px;
-
-}
-
-.hero{
-
-text-align:center;
-
-padding:30px;
-
-}
-
-.hero button{
-
-margin-top:20px;
-
-padding:15px 25px;
-
-border:none;
-
-background:#d4af37;
-
-color:black;
-
-border-radius:10px;
-
-}
-
-.products{
-
-padding:20px;
-
-display:grid;
-
-grid-template-columns:
-1fr 1fr;
-
-gap:20px;
-
-}
-
-.card{
-
-background:#171717;
-
-border-radius:16px;
-
-padding:15px;
-
-}
-
-.card img{
-
-width:100%;
-
-border-radius:12px;
-
-height:220px;
-
-object-fit:cover;
-
-}
-
-.name{
-
-margin-top:12px;
-
-font-size:22px;
-
-}
-
-.old{
-
-text-decoration:line-through;
-
-color:gray;
-
-}
-
-.price{
-
-color:#d4af37;
-
-font-size:26px;
-
-margin-top:6px;
-
-}
-
-.order{
-
-display:block;
-
-text-align:center;
-
-margin-top:12px;
-
-padding:12px;
-
-background:#d4af37;
-
-color:black;
-
-border-radius:10px;
-
-text-decoration:none;
-
-}
-
-footer{
-
-padding:30px;
-
-text-align:center;
-
-color:#888;
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sampana Sensations - Premium Perfumes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark: #0a0a0a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+        
+        .nav-icons a {
+            color: #fff;
+            font-size: 1.3rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-icons a:hover {
+            color: var(--gold);
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+        
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+        
+        .hero-text p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: 2px solid var(--gold);
+            background: transparent;
+            color: white;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            max-width: 420px;
+            filter: drop-shadow(0 30px 40px rgba(0,0,0,0.8));
+        }
+        
+        /* Trust Bar */
+        .trust-bar {
+            background: #111;
+            padding: 1.5rem 0;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+        }
+        
+        .trust-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            padding: 0 2rem;
+        }
+        
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: center;
+        }
+        
+        /* Categories */
+        .section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: var(--gold);
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .category-card {
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .category-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        
+        .category-card h3 {
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        /* Featured Products */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: contain;
+            background: #1a1a1a;
+            padding: 20px;
+        }
+        
+        .discount-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #c00;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .product-info {
+            padding: 1.2rem;
+        }
+        
+        .product-name {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin: 1rem 0;
+        }
+        
+        .current-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: #666;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid #222;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+    </style>
 </head>
-
 <body>
-
-<header>
-
-<div class="logo">
-
-Sampana Sensations
-
-</div>
-
-<div class="slogan">
-
-Smell Premium. Feel Premium.
-
-</div>
-
-</header>
-
-
-<div class="hero">
-
-<button>
-
-Shop Collection
-
-</button>
-
-</div>
-
-
-
-<div class="products">
-
-
-
-<div class="card">
-
-<img
-src="https://images.unsplash.com/photo-1541643600914-78b084683601"
->
-
-<div class="name">
-
-Midnight Oud
-
-</div>
-
-<div class="old">
-
-GH₵250 | $20
-
-</div>
-
-<div class="price">
-
-GH₵220 | $18
-
-</div>
-
-<a
-class="order"
-
-href="https://wa.me/233549502786?text=Hello%20I%20want%20to%20order%20Midnight%20Oud"
->
-
-Order
-
-</a>
-
-</div>
-
-
-
-
-<div class="card">
-
-<img
-src="https://images.unsplash.com/photo-1523293182086-7651a899d37f"
->
-
-<div class="name">
-
-Golden Splash
-
-</div>
-
-<div class="old">
-
-GH₵120 | $10
-
-</div>
-
-<div class="price">
-
-GH₵90 | $8
-
-</div>
-
-<a
-class="order"
-
-href="https://wa.me/233549502786?text=Hello%20I%20want%20to%20order%20Golden%20Splash"
->
-
-Order
-
-</a>
-
-</div>
-
-
-
-
-<div class="card">
-
-<img
-src="https://images.unsplash.com/photo-1615634260167-c8cdede054de"
->
-
-<div class="name">
-
-Royal Mist
-
-</div>
-
-<div class="price">
-
-GH₵300 | $24
-
-</div>
-
-<a
-class="order"
-
-href="https://wa.me/233549502786?text=Hello%20I%20want%20to%20order%20Royal%20Mist"
->
-
-Order
-
-</a>
-
-</div>
-
-
-
-
-<div class="card">
-
-<img
-src="https://images.unsplash.com/photo-1587017539504-67cfbddac569"
->
-
-<div class="name">
-
-Velvet Chill
-
-</div>
-
-<div class="price">
-
-GH₵180 | $15
-
-</div>
-
-<a
-class="order"
-
-href="https://wa.me/233549502786?text=Hello%20I%20want%20to%20order%20Velvet%20Chill"
->
-
-Order
-
-</a>
-
-</div>
-
-
-
-</div>
-
-
-<footer>
-
-© Sampana Sensations
-
-</footer>
-
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <strong>SS</strong> SAMPANA SENSATIONS
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Deals</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="#"><i class="fa-solid fa-user"></i></a>
+                <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="#" class="whatsapp-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Sampana<br>Sensations</h1>
+                <p>Smell Premium. Feel Premium.</p>
+                <p style="font-size: 1.1rem; max-width: 500px;">
+                    Discover luxurious perfumes, body splashes and scents that leave a lasting impression.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#" onclick="alert('Redirecting to Shop Collection...')" class="btn btn-gold">Shop Collection <i class="fa-solid fa-bag-shopping"></i></a>
+                    <a href="#" onclick="alert('Showing New Arrivals...')" class="btn">New Arrivals</a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="https://picsum.photos/id/1060/600/800" alt="Sampana Perfume Bottle" style="border: 12px solid #222; border-radius: 8px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-container">
+            <div class="trust-item">
+                <i class="fa-solid fa-truck" style="font-size: 2rem; color: var(--gold);"></i>
+                <div>
+                    <strong>Fast Delivery</strong><br>
+                    <small>Nationwide delivery across Ghana</small>
+                </div>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-shield-halved" style="font-size: 2rem; color: var(--gold);"></i>
+                <div>
+                    <strong>100% Original</strong><br>
+                    <small>Authentic & premium quality products</small>
+                </div>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-lock" style="font-size: 2rem; color: var(--gold);"></i>
+                <div>
+                    <strong>Secure Payments</strong><br>
+                    <small>Pay online or on delivery</small>
+                </div>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-headset" style="font-size: 2rem; color: var(--gold);"></i>
+                <div>
+                    <strong>24/7 Support</strong><br>
+                    <small>We're always here to help you</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shop By Category -->
+    <div class="section">
+        <h2 class="section-title">Shop By Category</h2>
+        <div class="categories-grid">
+            <div class="category-card" onclick="alert('Opening Perfumes category...')">
+                <img src="https://picsum.photos/id/1060/400/300" alt="Perfumes">
+                <h3>Perfumes</h3>
+            </div>
+            <div class="category-card" onclick="alert('Opening Body Splash category...')">
+                <img src="https://picsum.photos/id/1011/400/300" alt="Body Splash">
+                <h3>Body Splash</h3>
+            </div>
+            <div class="category-card" onclick="alert('Opening Chilly / Sprays...')">
+                <img src="https://picsum.photos/id/133/400/300" alt="Chilly Sprays">
+                <h3>Chilly / Sprays</h3>
+            </div>
+            <div class="category-card" onclick="alert('Opening Gift Sets...')">
+                <img src="https://picsum.photos/id/201/400/300" alt="Gift Sets">
+                <h3>Gift Sets</h3>
+            </div>
+            <div class="category-card" onclick="alert('Opening Flash Sales...')">
+                <img src="https://picsum.photos/id/870/400/300" alt="Flash Sales">
+                <h3>Flash Sales</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Products -->
+    <div class="section">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="discount-badge">-15%</div>
+                <img src="https://picsum.photos/id/1060/400/400" alt="Midnight Oud">
+                <div class="product-info">
+                    <h3 class="product-name">Midnight Oud</h3>
+                    <div class="price">
+                        <span class="current-price">GH₵250.00</span>
+                        <span class="old-price">GH₵295.00</span>
+                    </div>
+                    <button onclick="addToCart(this)" class="btn" style="width: 100%; justify-content: center;">Select Options</button>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="discount-badge">-10%</div>
+                <img src="https://picsum.photos/id/1011/400/400" alt="Velvet Rose">
+                <div class="product-info">
+                    <h3 class="product-name">Velvet Rose</h3>
+                    <div class="price">
+                        <span class="current-price">GH₵180.00</span>
+                        <span class="old-price">GH₵200.00</span>
+                    </div>
+                    <button onclick="addToCart(this)" class="btn" style="width: 100%; justify-content: center;">Select Options</button>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/id/133/400/400" alt="Noir Essence">
+                <div class="product-info">
+                    <h3 class="product-name">Noir Essence</h3>
+                    <div class="price">
+                        <span class="current-price">$45.00 USD</span>
+                    </div>
+                    <button onclick="addToCart(this)" class="btn btn-gold" style="width: 100%; justify-content: center;">Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="discount-badge">-12%</div>
+                <img src="https://picsum.photos/id/201/400/400" alt="Golden Aura">
+                <div class="product-info">
+                    <h3 class="product-name">Golden Aura</h3>
+                    <div class="price">
+                        <span class="current-price">GH₵220.00</span>
+                        <span class="old-price">GH₵250.00</span>
+                    </div>
+                    <button onclick="addToCart(this)" class="btn" style="width: 100%; justify-content: center;">Select Options</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Special Discounts -->
+    <div style="background: linear-gradient(135deg, #1a1a1a, #111); padding: 4rem 2rem; text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="color: var(--gold); font-size: 2.5rem;">Special Discounts!</h2>
+            <p style="font-size: 1.3rem; margin: 1.5rem 0;">Enjoy amazing discounts on selected items.</p>
+            <a href="#" onclick="alert('Redirecting to Deals page...')" class="btn btn-gold" style="font-size: 1.2rem; padding: 1.2rem 3rem;">Shop Deals Now</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>Order on WhatsApp</h3>
+                <p>Chat with us directly and place your order easily.</p>
+            </div>
+            <div>
+                <h3>Call to Order</h3>
+                <p>Prefer talking? Call us directly to order.</p>
+            </div>
+            <div>
+                <h3>Pay Online</h3>
+                <p>Pay securely with Mobile Money or Card.</p>
+            </div>
+            <div>
+                <h3>Pay on Delivery</h3>
+                <p>Order now and pay when your items arrive.</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem; opacity: 0.6; font-size: 0.9rem;">
+            © 2026 Sampana Sensations • All Rights Reserved
+        </div>
+    </footer>
+
+    <script>
+        function addToCart(btn) {
+            btn.textContent = "Added ✓";
+            btn.style.background = "#25D366";
+            setTimeout(() => {
+                btn.textContent = "Add to Cart";
+                btn.style.background = "";
+            }, 2000);
+            alert("Item added to cart! (Demo)");
+        }
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                }
+            });
+        });
+        
+        // Fake cart count
+        console.log("%cSampana Sensations website loaded successfully!", "color: #d4af37; font-size: 16px;");
+    </script>
 </body>
-
 </html>
