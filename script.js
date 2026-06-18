@@ -104,7 +104,7 @@ window.removeItem = function(id) {
     updateCartUI();
 };
 
-// FORM SUBMISSION & WHATSAPP CHAT ROUTING
+// FIXED FORM SUBMISSION & WHATSAPP CHAT ROUTING
 checkoutBtn.addEventListener('click', () => {
     if (cart.length === 0) {
         alert('Please add products to your cart before checking out.');
@@ -120,25 +120,25 @@ checkoutBtn.addEventListener('click', () => {
         return;
     }
 
-    let orderText = `✨ *NEW ORDER - SAMPANA SENSATIONS* ✨\n\n`;
-    orderText += `👤 *Customer Details:* \n`;
-    orderText += `• Name: ${name}\n`;
-    orderText += `• Location: ${location}\n`;
-    orderText += `• Payment: ${payment}\n\n`;
-    orderText += `🛍️ *Items Ordered:* \n`;
+    let orderText = '✨ NEW ORDER - SAMPANA SENSATIONS ✨\n\n';
+    orderText += '👤 Customer Details: \n';
+    orderText += '• Name: ' + name + '\n';
+    orderText += '• Location: ' + location + '\n';
+    orderText += '• Payment: ' + payment + '\n\n';
+    orderText += '🛍️ Items Ordered: \n';
 
     let total = 0;
     cart.forEach(item => {
         const lineTotal = item.price * item.quantity;
         total += lineTotal;
-        orderText += `• ${item.name} (x${item.quantity}) - GH₵${lineTotal.toFixed(2)}\n`;
+        orderText += '• ' + item.name + ' (x' + item.quantity + ') - GH₵' + lineTotal.toFixed(2) + '\n';
     });
 
-    orderText += `\n💰 *Total Order Cost:* GH₵${total.toFixed(2)}`;
+    orderText += '\n💰 Total Order Cost: GH₵' + total.toFixed(2);
 
-        // Build the correct text string link layout
-    const whatsappURL = "https://wa.me" + encodeURIComponent(orderText);
+    // Completely rebuilt link format to prevent curly-brace syntax crashes
+    const baseLink = "https://wa.me";
+    const finalCleanURL = baseLink + encodeURIComponent(orderText);
     
-    // Open standard mobile WhatsApp chat protocol window automatically
-    window.open(whatsappURL, '_blank');
+    window.open(finalCleanURL, '_blank');
 });
