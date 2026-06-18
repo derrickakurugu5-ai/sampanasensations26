@@ -104,36 +104,30 @@ window.removeItem = function(id) {
     updateCartUI();
 };
 
-// FIXED FORM SUBMISSION & WHATSAPP CHAT ROUTING
+// FIXED ONE-LINE SUBMISSION FOR WHATSAPP APP COMPATIBILITY
 checkoutBtn.addEventListener('click', () => {
     if (cart.length === 0) {
         alert('Please add products to your cart before checking out.');
         return;
     }
 
-    const name = document.getElementById('customer-name').value.trim() || 'Valued Customer';
-    const location = document.getElementById('customer-location').value.trim() || 'Specify on Chat';
+    const name = document.getElementById('customer-name').value || 'Customer';
+    const location = document.getElementById('customer-location').value || 'Not Specified';
     const payment = document.getElementById('payment-method').value;
 
-    let orderText = '✨ NEW ORDER - SAMPANA SENSATIONS ✨\n\n';
-    orderText += '👤 Customer Details: \n';
-    orderText += '• Name: ' + name + '\n';
-    orderText += '• Location: ' + location + '\n';
-    orderText += '• Payment: ' + payment + '\n\n';
-    orderText += '🛍️ Items Ordered: \n';
-
+    // Create a simple, flat text sentence with NO complex line breaks or special symbols
+    let itemNames = [];
     let total = 0;
     cart.forEach(item => {
-        const lineTotal = item.price * item.quantity;
-        total += lineTotal;
-        orderText += '• ' + item.name + ' (x' + item.quantity + ') - GH₵' + lineTotal.toFixed(2) + '\n';
+        itemNames.push(item.name + " (x" + item.quantity + ")");
+        total += (item.price * item.quantity);
     });
 
-    orderText += '\n💰 Total Order Cost: GH₵' + total.toFixed(2);
+    let orderText = "Hello Sampana Sensations! My name is " + name + " from " + location + ". I want to order: " + itemNames.join(", ") + ". Total cost is GH₵" + total.toFixed(2) + ". Payment method: " + payment + ".";
 
     const baseLink = "https://wa.me";
     const finalCleanURL = baseLink + encodeURIComponent(orderText);
     
-    // CRITICAL FIX: Changing window location directly instead of window.open forces mobile browsers to forward directly to WhatsApp!
+    // Redirect protocol
     window.location.href = finalCleanURL;
 });
