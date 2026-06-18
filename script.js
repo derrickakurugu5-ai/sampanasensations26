@@ -111,9 +111,9 @@ checkoutBtn.addEventListener('click', () => {
         return;
     }
 
-    // Grab field input data cleanly without aggressive character requirements
-    const name = document.getElementById('customer-name').value || 'Customer';
-    const location = document.getElementById('customer-location').value || 'Not Specified';
+    // Grab field input data cleanly with absolute backup fallback names
+    const name = document.getElementById('customer-name').value.trim() || 'Valued Customer';
+    const location = document.getElementById('customer-location').value.trim() || 'Specify on Chat';
     const payment = document.getElementById('payment-method').value;
 
     let orderText = '✨ NEW ORDER - SAMPANA SENSATIONS ✨\n\n';
@@ -132,7 +132,7 @@ checkoutBtn.addEventListener('click', () => {
 
     orderText += '\n💰 Total Order Cost: GH₵' + total.toFixed(2);
 
-    // Hardcoded destination phone link setup 
+    // Completely built plain mathematical string addition routing link
     const baseLink = "https://wa.me";
     const finalCleanURL = baseLink + encodeURIComponent(orderText);
     
