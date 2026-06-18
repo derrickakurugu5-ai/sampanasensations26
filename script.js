@@ -136,7 +136,9 @@ checkoutBtn.addEventListener('click', () => {
 
     orderText += `\n💰 *Total Order Cost:* GH₵${total.toFixed(2)}`;
 
-    const whatsappURL = `https://wa.me{encodeURIComponent(orderText)}`;
+        // Build the correct text string link layout
+    const whatsappURL = "https://wa.me" + encodeURIComponent(orderText);
     
+    // Open standard mobile WhatsApp chat protocol window automatically
     window.open(whatsappURL, '_blank');
 });
