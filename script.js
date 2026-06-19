@@ -93,7 +93,6 @@ shop.innerHTML+=`
 function addCart(name){
 
 const item=
-
 products.find(
 p=>p.name===name
 )
