@@ -472,17 +472,55 @@ border-radius:16px;
 
 #cartItems button{
 
-width:32px;
+width:26px;
 
-height:32px;
+height:26px;
 
 border:none;
 
-border-radius:8px;
+border-radius:50%;
+
+background:#1d1d1d;
+
+color:#d4af37;
+
+font-size:14px;
+
+font-weight:bold;
+
+margin-left:6px;
+
+}
+
+
+
+#cartItems button:hover{
 
 background:#d4af37;
 
-font-size:16px;
+color:black;
+
+}
+
+
+
+.remove{
+
+background:#8b0000!important;
+
+color:white;
+
+}
+
+
+
+.qty{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:6px;
 
 }
 
