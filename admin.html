@@ -1,46 +1,211 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sampana Manager</title>
-    <style>
-        body { background-color: #0b0b0b; color: #ffffff; font-family: sans-serif; padding: 20px; text-align: center; }
-        .box { max-width: 500px; margin: 30px auto; background: #141414; padding: 20px; border: 1px solid #222; }
-        input { width: 90%; padding: 12px; margin: 10px 0; background: #000; color: #fff; border: 1px solid #333; }
-        button { width: 95%; padding: 12px; background: #d4af37; color: #000; border: none; font-weight: bold; cursor: pointer; margin-top: 10px; }
-        textarea { width: 90%; height: 100px; background: #000; color: #aaa; margin-top: 15px; padding: 10px; }
-    </style>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>
+
+Sampana Admin
+
+</title>
+
+<style>
+
+body{
+
+background:black;
+
+color:white;
+
+font-family:Arial;
+
+padding:20px;
+
+}
+
+.box{
+
+max-width:500px;
+
+margin:auto;
+
+background:#111;
+
+padding:25px;
+
+border-radius:20px;
+
+}
+
+input,
+select{
+
+width:100%;
+
+padding:15px;
+
+margin:10px 0;
+
+border:none;
+
+border-radius:12px;
+
+}
+
+button{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:14px;
+
+background:#d4af37;
+
+font-weight:bold;
+
+}
+
+textarea{
+
+width:100%;
+
+height:250px;
+
+margin-top:20px;
+
+background:black;
+
+color:#d4af37;
+
+padding:15px;
+
+}
+
+</style>
+
 </head>
+
 <body>
 
-    <h2>Sampana Store Admin</h2>
-    <div class="box">
-        <label>Product Name</label>
-        <input type="text" id="name" placeholder="e.g., Midnight Oud">
-        
-        <label>Price (GH₵)</label>
-        <input type="number" id="price" placeholder="e.g., 250">
-        
-        <label>Image URL</label>
-        <input type="text" id="img" placeholder="Paste link here">
-        
-        <button onclick="makeCard()">Generate Product Card</button>
-        
-        <textarea id="output" readonly placeholder="Your code snippet will appear here..."></textarea>
-    </div>
+<div class="box">
 
-    <script>
-        function makeCard() {
-            const n = document.getElementById('name').value;
-            const p = document.getElementById('price').value;
-            const i = document.getElementById('img').value || 'https://unsplash.com';
-            const id = Math.floor(Math.random() * 9999);
-            
-            if(!n || !p) { alert('Fill out name and price'); return; }
-            
-            document.getElementById('output').value = `<div class="product-card" data-id="${id}" data-name="${n}" data-price="${p}">\n  <div class="product-img-holder">\n    <img src="${i}" alt="${n}">\n  </div>\n  <div class="product-details">\n    <h3>${n}</h3>\n    <p class="price">GH₵${parseFloat(p).toFixed(2)}</p>\n    <button class="add-to-cart-btn">Add To Bag</button>\n  </div>\n</div>`;
-        }
-    </script>
+<h1>
+
+Sampana Admin
+
+</h1>
+
+<select id="category">
+
+<option>
+
+Perfumes
+
+</option>
+
+<option>
+
+Body Splash
+
+</option>
+
+<option>
+
+Body Spray
+
+</option>
+
+<option>
+
+Chilly
+
+</option>
+
+</select>
+
+<input
+id="name"
+placeholder="Product Name">
+
+<input
+id="old"
+placeholder="Old Price">
+
+<input
+id="price"
+placeholder="New Price">
+
+<input
+id="img"
+placeholder="Image URL">
+
+<button
+onclick="generate()">
+
+Generate Product Code
+
+</button>
+
+<textarea
+id="result">
+
+</textarea>
+
+</div>
+
+<script>
+
+function generate(){
+
+const code=
+
+`
+
+{
+
+category:"${
+document.getElementById("category").value
+}",
+
+name:"${
+document.getElementById("name").value
+}",
+
+old:${
+document.getElementById("old").value
+},
+
+price:${
+document.getElementById("price").value
+},
+
+img:"${
+document.getElementById("img").value
+}"
+
+},
+
+`
+
+document
+.getElementById(
+"result"
+)
+.value=
+code
+
+}
+
+</script>
+
 </body>
+
 </html>
