@@ -1,12 +1,17 @@
 const products=[
   {
+
 category:"Body Spray",
+
 name:"Right Guard ",
+
 old:57,
+
 price:45,
+
 img:"https://makkosgh.com/wp-content/uploads/2021/05/Right-Guard-Men-Deodorant-Spray-Original-250ml.jpg"
+
 },
-  
 
 {
 category:"Perfumes",
