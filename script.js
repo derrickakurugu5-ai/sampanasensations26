@@ -45,29 +45,31 @@ img:"https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=800"
 let cart=[]
 
 const shop=
-document.getElementById("shop")
+document.getElementById(
+"shop"
+)
 
-function showCategory(category){
+function showCategory(cat){
 
 shop.innerHTML=""
 
 products
 
 .filter(
-p=>p.category===category
+p=>p.category===cat
 )
 
-.forEach(product=>{
+.forEach(p=>{
 
 shop.innerHTML+=`
 
-<div class="card"><img src="${product.img}"><h3>${product.name}
+<div class="card"><img src="${p.img}"><h3>${p.name}
 
-</h3><div class="old">GH₵${product.old}
+</h3><div class="old">GH₵${p.old}
 
-</div><div class="price">GH₵${product.price}
+</div><div class="price">GH₵${p.price}
 
-</div><button onclick="addCart('${product.name}')">Add To Cart
+</div><button onclick="addCart('${p.name}')">Add To Cart
 
 </button></div>`
 
@@ -75,21 +77,17 @@ shop.innerHTML+=`
 
 }
 
-showCategory(
-"Perfumes"
-)
-
 function addCart(name){
 
-const existing=
+const found=
 
 cart.find(
-i=>i.name===name
+x=>x.name===name
 )
 
-if(existing){
+if(found){
 
-existing.qty++
+found.qty++
 
 }
 
@@ -111,37 +109,88 @@ qty:1
 
 }
 
-showToast()
-
 renderCart()
+
+toast()
 
 }
 
-function removeItem(name){
+function renderCart(){
 
-cart=
+const box=
 
-cart.filter(
-i=>i.name!==name
+document.getElementById(
+"cartItems"
 )
 
-renderCart()
+let total=0
+
+box.innerHTML=""
+
+cart.forEach(item=>{
+
+total+=
+
+item.qty*
+item.price
+
+box.innerHTML+=`
+
+<div>${item.name}
+
+x${item.qty}
+
+<button onclick="minus('${item.name}')">−
+
+</button><button onclick="plus('${item.name}')">+ 
+
+</button><button onclick="removeItem('${item.name}')">❌
+
+</button></div>`
+
+})
+
+document.getElementById(
+"cartCount"
+).innerText=
+
+cart.length+
+
+" item(s)"
+
+document.getElementById(
+"total"
+).innerText=
+
+"GH₵"+
+
+total
 
 }
 
-function changeQty(name,val){
-
-const item=
+function plus(name){
 
 cart.find(
-i=>i.name===name
+x=>x.name===name
+).qty++
+
+renderCart()
+
+}
+
+function minus(name){
+
+let item=
+
+cart.find(
+x=>x.name===name
 )
 
-if(!item)return
+item.qty--
 
-item.qty+=val
-
-if(item.qty<=0){
+if(
+item.qty<=0
+){
 
 removeItem(name)
 
@@ -153,69 +202,15 @@ renderCart()
 
 }
 
-function renderCart(){
+function removeItem(name){
 
-const items=
+cart=
 
-document.getElementById(
-"cartItems"
+cart.filter(
+x=>x.name!==name
 )
 
-const count=
-
-document.getElementById(
-"cartCount"
-)
-
-const totalBox=
-
-document.getElementById(
-"total"
-)
-
-items.innerHTML=""
-
-let total=0
-
-cart.forEach(item=>{
-
-total+=
-item.price*
-item.qty
-
-items.innerHTML+=`
-
-<div><b>${item.name}
-
-</b><br>Qty:
-
-<button onclick="changeQty('${item.name}',-1)">−</button>
-
-${item.qty}
-
-<button onclick="changeQty('${item.name}',1)">+</button>
-
-<br>GH₵
-
-${item.price*item.qty}
-
-<button onclick="removeItem('${item.name}')">❌
-
-</button></div>`
-
-})
-
-count.innerText=
-
-cart.length+
-
-" item(s)"
-
-totalBox.innerText=
-
-"GH₵"+
-
-total
+renderCart()
 
 }
 
@@ -237,114 +232,72 @@ let msg=
 
 "Hello Sampana Sensations%0A%0A"
 
-msg+=
-
-"ORDER:%0A%0A"
-
 let total=0
 
-cart.forEach(item=>{
+cart.forEach(i=>{
 
 msg+=
 
-"• "
+i.name+
 
-+ 
+" x"+
 
-item.name
+i.qty+
 
-+ 
+" GH₵"+
 
-" ×"
-
-+ 
-
-item.qty
-
-+ 
-
-" — GH₵"
-
-+ 
-
-item.price*
-item.qty
-
-+ 
+i.qty*
+i.price+
 
 "%0A"
 
 total+=
 
-item.price*
-item.qty
+i.qty*
+i.price
 
 })
 
 msg+=
 
-"%0ATotal: GH₵"
-
-+ 
+"%0ATotal GH₵"+
 
 total
 
-msg+=
-
-"%0ADelivery: "
-
-+ 
-
-document
-.getElementById(
-"delivery"
-)
-.value
-
-msg+=
-
-"%0APayment: "
-
-+ 
-
-document
-.getElementById(
-"payment"
-)
-.value
-
 window.open(
 
-"https://wa.me/233535556878?text="+msg,
-
-"_blank"
+"https://wa.me/233535556878?text="+msg
 
 )
 
 }
 
-function showToast(){
+function toast(){
 
-const toast=
+const t=
 
 document.createElement(
 "div"
 )
 
-toast.innerText=
+t.innerText=
 
 "✓ Added to Cart"
 
-toast.style=
-"position:fixed;bottom:20px;right:20px;background:#d4af37;color:black;padding:12px;border-radius:12px"
+t.style=
+"position:fixed;bottom:20px;right:20px;background:#d4af37;padding:10px"
 
 document.body.appendChild(
-toast
+t
 )
 
 setTimeout(
-()=>toast.remove(),
-1800
+()=>t.remove(),
+1500
 )
 
 }
+
+showCategory(
+"Perfumes"
+)
