@@ -1,14 +1,22 @@
-body{
+*{
 
 margin:0;
 
-background:#090909;
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+body{
+
+background:#070707;
 
 color:white;
 
 font-family:Arial;
 
-padding:20px;
+padding:18px;
 
 }
 
@@ -16,11 +24,23 @@ header{
 
 text-align:center;
 
+padding:40px 0;
+
 }
 
-header h1{
+h1{
 
-font-size:48px;
+font-size:56px;
+
+color:#d4af37;
+
+}
+
+header p{
+
+color:#bbb;
+
+font-size:18px;
 
 }
 
@@ -28,48 +48,84 @@ font-size:48px;
 
 display:flex;
 
-gap:10px;
+gap:12px;
 
 overflow:auto;
 
-margin:25px 0;
+padding:20px 0;
 
 }
 
-button{
+.sports button{
 
-padding:15px;
+min-width:140px;
 
-border:none;
+background:#111;
 
-border-radius:20px;
+color:white;
 
-background:#d4af37;
+border:2px solid #d4af37;
 
-font-size:16px;
+padding:18px;
+
+border-radius:18px;
 
 }
 
 .box{
 
-background:#151515;
+background:#121212;
 
 padding:20px;
 
-border-radius:25px;
+margin-top:20px;
 
-margin-bottom:20px;
+border-radius:25px;
 
 }
 
 .match{
 
-background:#202020;
+background:#1d1d1d;
+
+padding:18px;
+
+border-radius:20px;
+
+margin-bottom:15px;
+
+}
+
+.match button{
+
+width:100%;
+
+margin-top:15px;
+
+background:#d4af37;
+
+border:none;
 
 padding:15px;
 
-margin:12px 0;
+border-radius:16px;
 
-border-radius:15px;
+}
+
+#suggestions{
+
+color:#d4af37;
+
+}
+
+#slip div{
+
+background:#1e1e1e;
+
+padding:12px;
+
+margin-top:10px;
+
+border-radius:14px;
 
 }
