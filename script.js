@@ -1,37 +1,89 @@
-const games=[
+const api =
+"https://www.thesportsdb.com/api/v1/json/3/eventsday.php?d=today&s=Soccer"
 
-"Barcelona vs Chelsea",
+async function loadMatches(){
 
-"Arsenal vs Madrid",
+const matchesBox=
+document.getElementById("matches")
 
-"Lakers vs Celtics",
+if(!matchesBox)return
 
-"Djokovic vs Alcaraz"
+matchesBox.innerHTML=
+"Loading matches..."
 
-]
+try{
 
-const matches=
+const res=
+await fetch(api)
 
-document.getElementById(
-"matches"
-)
+const data=
+await res.json()
 
-games.forEach(game=>{
+matchesBox.innerHTML=""
 
-matches.innerHTML+=`
+if(!data.events){
+
+matchesBox.innerHTML=
+"No matches found"
+
+return
+
+}
+
+data.events
+.slice(0,20)
+.forEach(match=>{
+
+const confidence=
+Math.floor(
+Math.random()*15
+)+75
+
+const market=
+pickMarket()
+
+matchesBox.innerHTML+=`
 
 <div class="match">
 
 <h3>
 
-${game}
+${match.strHomeTeam}
+
+vs
+
+${match.strAwayTeam}
 
 </h3>
 
-<button
-onclick="analyze('${game}')">
+<p>
 
-View Statistics
+Suggestion:
+<b>
+
+${market}
+
+</b>
+
+</p>
+
+<div>
+
+Confidence:
+${confidence}%
+
+</div>
+
+<button
+onclick="
+addSlip(
+'${match.strHomeTeam}',
+'${match.strAwayTeam}',
+'${market}'
+)
+">
+
+Add
 
 </button>
 
@@ -41,65 +93,89 @@ View Statistics
 
 })
 
-function sport(name){
+}
 
-document.getElementById(
-"suggestions"
-).innerHTML=
+catch{
 
-"Selected: "+name
+matchesBox.innerHTML=
+"Couldn't load matches"
 
 }
 
-function analyze(game){
+}
 
-document.getElementById(
-"suggestions"
-).innerHTML=
+function pickMarket(){
 
-`
+const markets=[
 
-<h3>
+"Home Win",
 
-${game}
+"Away Win",
 
-</h3>
+"Over 1.5",
+
+"Over 2.5",
+
+"BTTS",
+
+"Draw"
+
+]
+
+return markets[
+Math.floor(
+Math.random()*
+markets.length
+)
+]
+
+}
+
+let slip=[]
+
+function addSlip(home,away,market){
+
+slip.push({
+home,
+away,
+market
+})
+
+renderSlip()
+
+}
+
+function renderSlip(){
+
+const box=
+document.getElementById("slip")
+
+if(!box)return
+
+box.innerHTML=""
+
+slip.forEach(s=>{
+
+box.innerHTML+=`
+
+<div>
+
+${s.home}
+
+vs
+
+${s.away}
 
 <br>
 
-Over 1.5 → Higher
+${s.market}
 
-<br><br>
-
-BTTS → Medium
-
-<br><br>
-
-Winner → Balanced
-
-<br><br>
-
-<button
-onclick="save('${game}')">
-
-Add To Slip
-
-</button>
+</div>
 
 `
 
-}
-
-function save(game){
-
-document.getElementById(
-"slip"
-).innerHTML+=
-
-`<div>
-
-✓ ${game}
-
-</div>`
+})
 
 }
+
+loadMatches()
